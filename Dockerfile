@@ -25,4 +25,7 @@ COPY docker-entrypoint.sh /app/mariadb
 RUN chown -R $USER:$USER /app && chown $USER:$USER /var/run/mysqld
 WORKDIR /app
 
+# Make the databse case insensitive
+RUN sed -i -e '/\[mysqld\]/ a lower_case_table_names = 1' /etc/mysql/my.cnf
+
 ENTRYPOINT ["/app/mariadb/docker-entrypoint.sh", "--user=mysql", "--datadir=/app/mariadb-data", "--socket=/var/run/mysqld/mysqld.sock"]
