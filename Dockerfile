@@ -1,6 +1,6 @@
 FROM alpine:3.5
 MAINTAINER timo.tiuraniemi@iki.fi
-ENV MARIADB_VERSION 10.1.21-r0
+ENV MARIADB_VERSION 10.1.22-r0
 
 ENV USER mysql
 RUN adduser -D -u 1000 $USER 
